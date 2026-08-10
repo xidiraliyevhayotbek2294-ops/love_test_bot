@@ -101,9 +101,9 @@ async def finish_test(message, user):
             chat_id=ADMIN_ID,
             text=result
         )
-
-
 def main():
+    if not TOKEN:
+        def main():
     if not TOKEN:
         raise ValueError("BOT_TOKEN topilmadi")
 
@@ -112,7 +112,17 @@ def main():
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CallbackQueryHandler(button))
 
-    app.run_polling()
+    port = int(os.environ.get("PORT", "8080"))
+    webhook_url = os.environ.get("WEBHOOK_URL")
+
+    if not webhook_url:
+        raise ValueError("WEBHOOK_URL topilmadi")
+
+    app.run_webhook(
+        listen="0.0.0.0",
+        port=port,
+        webhook_url=webhook_url
+    )
 
 
 if __name__ == "__main__":
