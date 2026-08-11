@@ -92,11 +92,9 @@ async def finish_test(message, user):
         result += f"{i + 1}. {answer}\n"
 
     await message.reply_text(
-        "❤️ Test tugadi!\n\n"
-        "Javoblaringiz qabul qilindi. Rahmat 😊"
-    )
-
-    if ADMIN_ID:
+        def main():
+    if not TOKEN:
+        raise ValueError("BOT_TOKEN topilmadi")
         await message.get_bot().send_message(
             chat_id=ADMIN_ID,
             text=result
