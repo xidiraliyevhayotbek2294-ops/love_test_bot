@@ -90,9 +90,29 @@ async def finish_test(message, user):
 
     for i, answer in enumerate(answers):
         result += f"{i + 1}. {answer}\n"
+        async def finish_test(message, user):
+    answers = user_data[user.id]["answers"]
+
+    result = (
+        "❤️ TEST YAKUNLANDI\n\n"
+        f"Foydalanuvchi: {user.first_name}\n"
+        f"Telegram ID: {user.id}\n\n"
+        "Javoblar:\n"
+    )
+
+    for i, answer in enumerate(answers):
+        result += f"{i + 1}. {answer}\n"
 
     await message.reply_text(
-        def main():
+        "❤️ Test tugadi!\n\n"
+        "Javoblaringiz qabul qilindi. Rahmat 😊"
+    )
+
+    if ADMIN_ID:
+        await message.get_bot().send_message(
+            chat_id=ADMIN_ID,
+            text=result
+    )
     if not TOKEN:
         raise ValueError("BOT_TOKEN topilmadi")
         await message.get_bot().send_message(
